@@ -13,7 +13,7 @@ Currently, the code is very complicated and tangled, so we'd like you to invest 
 ### Functional requirements
 ```
 Given:
- - a two dimensional map of Mars
+ - a two dimensional field of Mars
  - the initial starting point and direction of the Rover
  
 When:
@@ -22,7 +22,7 @@ When:
 
 Then:
  - move the Rover
-   if the Rover disappears over the edge of the map (the horizon), continue on the other side (remember, Mars is a sphere)
+   if the Rover disappears over the edge of the field (the horizon), continue on the other side (remember, Mars is a sphere)
 ```
 
 #### Bonus point

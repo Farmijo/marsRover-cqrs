@@ -1,55 +1,58 @@
 package com.wallapop.marsRover.domain;
 
 public class CoordinateSystem {
-    private int currentCoordinateX;
-    private int currentCoordinateY;
+
+    private Coordinate currentCoordinates;
     private final int maximumXCoordinate;
     private final int maximumYCoordinate;
 
     public CoordinateSystem(int initialCoordinateX, int initialCoordinateY, Field field) {
-        this.currentCoordinateX = initialCoordinateX;
-        this.currentCoordinateY = initialCoordinateY;
+        this.currentCoordinates = new Coordinate(initialCoordinateX, initialCoordinateY);
         this.maximumXCoordinate = field.getSizeX();
         this.maximumYCoordinate = field.getSizeY();
     }
 
     public int getCurrentCoordinateX() {
-        return currentCoordinateX;
+        return this.currentCoordinates.getCoordinateX();
     }
 
     public int getCurrentCoordinateY() {
-        return currentCoordinateY;
+        return this.currentCoordinates.getCoordinateY();
     }
 
     public void increaseCoordinateX() {
-        if (this.currentCoordinateX == this.maximumXCoordinate) {
-            this.currentCoordinateX = 0;
+        var xCoordinate = this.currentCoordinates.getCoordinateX();
+        if (this.currentCoordinates.getCoordinateX() == this.maximumXCoordinate) {
+            this.currentCoordinates.setCoordinateX(0);
         } else {
-            this.currentCoordinateX++;
+            this.currentCoordinates.setCoordinateX(++xCoordinate);
         }
     }
 
     public void increaseCoordinateY() {
-        if (this.currentCoordinateY == this.maximumYCoordinate) {
-            this.currentCoordinateY = 0;
+        var yCoordinate = this.currentCoordinates.getCoordinateY();
+        if (yCoordinate == this.maximumYCoordinate) {
+            this.currentCoordinates.setCoordinateY(0);
         } else {
-            this.currentCoordinateY++;
+            this.currentCoordinates.setCoordinateY(++yCoordinate);
         }
     }
 
     public void decreaseCoordinateX() {
-        if (this.currentCoordinateX == 0) {
-            this.currentCoordinateX = this.maximumXCoordinate;
+        var xCoordinate = this.currentCoordinates.getCoordinateX();
+        if (xCoordinate == 0) {
+            this.currentCoordinates.setCoordinateX(this.maximumXCoordinate);
         } else {
-            this.currentCoordinateX--;
+            this.currentCoordinates.setCoordinateX(--xCoordinate);
         }
     }
 
     public void decreaseCoordinateY() {
-        if (this.currentCoordinateY == 0) {
-            this.currentCoordinateY = this.maximumYCoordinate;
+        var yCoordinate = this.currentCoordinates.getCoordinateY();
+        if (yCoordinate == 0) {
+            this.currentCoordinates.setCoordinateY(this.maximumYCoordinate);
         } else {
-            this.currentCoordinateY--;
+            this.currentCoordinates.setCoordinateY(--yCoordinate);
         }
     }
 }

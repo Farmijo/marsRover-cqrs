@@ -6,11 +6,13 @@ Welcome to Wallapop and its backend technical test
 
 ## Mars Rover refactoring kata
 
-We need to improve the existing solution that translates commands sent from Earth to instructions that are understood by our Rover on Mars
+We need to improve the existing solution that translates commands sent from Earth to instructions that are understood by
+our Rover on Mars
 
 Currently, the code is very complicated and tangled, so we'd like you to invest some time to clean it up
 
 ### Functional requirements
+
 ```
 Given:
  - a two dimensional field of Mars
@@ -27,7 +29,9 @@ Then:
 
 #### Bonus point
 
-After ensuring that the functional requirements have been met, as a bonus point (not necessary but more than welcome), add a new feature:
+After ensuring that the functional requirements have been met, as a bonus point (not necessary but more than welcome),
+add a new feature:
+
 ```
 Given:
  - a list of obstacles with their exact location
@@ -48,7 +52,8 @@ Then:
 
 - Fulfill the [Functional Requirements](#functional-requirements) stated in this readme.
 - Refactor the provided code, creating new classes, methods or whatever needed.
-- Use any JVM language but, if you want to use one other than Java, please convert the initial codebase to that language.
+- Use any JVM language but, if you want to use one other than Java, please convert the initial codebase to that
+  language.
 - Be testable. This means that we should not need to run the main app in order to check that everything is working.
 - Be self compiled.
 - Be self executable.
@@ -70,9 +75,11 @@ Then:
 
 ## How to do it
 
-This project is a [Template Project](https://help.github.com/en/articles/creating-a-repository-from-a-template) that allows you to create a new project of your own based on this one
+This project is a [Template Project](https://help.github.com/en/articles/creating-a-repository-from-a-template) that
+allows you to create a new project of your own based on this one
 
-We would like you to maintain this new repository as private, and give access to `wallabackend` to evaluate it once you are done with your solution
+We would like you to maintain this new repository as private, and give access to `wallabackend` to evaluate it once you
+are done with your solution
 
 Please, let us know as soon as you finish, otherwise we will not start the review
 

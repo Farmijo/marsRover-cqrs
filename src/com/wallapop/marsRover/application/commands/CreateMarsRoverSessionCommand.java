@@ -13,7 +13,7 @@ public class CreateMarsRoverSessionCommand {
             String initialOrientation,
             int initialPositionX,
             int initialPositionY
-    ){
+    ) {
         this.initialOrientation = initialOrientation;
         this.initialPositionX = initialPositionX;
         this.initialPositionY = initialPositionY;

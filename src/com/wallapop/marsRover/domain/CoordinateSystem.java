@@ -1,15 +1,21 @@
 package com.wallapop.marsRover.domain;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 public class CoordinateSystem {
 
     private Coordinate currentCoordinates;
     private final int maximumXCoordinate;
     private final int maximumYCoordinate;
+    private final Collection<Coordinate> obstacles;
 
     public CoordinateSystem(int initialCoordinateX, int initialCoordinateY, Field field) {
         this.currentCoordinates = new Coordinate(initialCoordinateX, initialCoordinateY);
         this.maximumXCoordinate = field.getSizeX();
         this.maximumYCoordinate = field.getSizeY();
+        this.obstacles = field.getObstaclePositions();
     }
 
     public int getCurrentCoordinateX() {
@@ -21,38 +27,87 @@ public class CoordinateSystem {
     }
 
     public void increaseCoordinateX() {
+        int newXCoordinate;
         var xCoordinate = this.currentCoordinates.getCoordinateX();
+        var yCoordinate = this.currentCoordinates.getCoordinateX();
+
         if (this.currentCoordinates.getCoordinateX() == this.maximumXCoordinate) {
-            this.currentCoordinates.setCoordinateX(0);
+            newXCoordinate = 0;
         } else {
-            this.currentCoordinates.setCoordinateX(++xCoordinate);
+            newXCoordinate = xCoordinate + 1;
+        }
+
+        if(isCoordinateBusy(newXCoordinate,yCoordinate)) {
+            System.out.println("The desired Coordinate is busy, marsRover won't move");
+        } else {
+            this.currentCoordinates.setCoordinateX(newXCoordinate);
         }
     }
 
     public void increaseCoordinateY() {
+        int newYCoordinate;
+        var xCoordinate = this.currentCoordinates.getCoordinateX();
         var yCoordinate = this.currentCoordinates.getCoordinateY();
+
         if (yCoordinate == this.maximumYCoordinate) {
-            this.currentCoordinates.setCoordinateY(0);
+            newYCoordinate = 0;
         } else {
-            this.currentCoordinates.setCoordinateY(++yCoordinate);
+            newYCoordinate = yCoordinate + 1;
+        }
+        if(isCoordinateBusy(xCoordinate, newYCoordinate)) {
+            System.out.println("The desired Coordinate is busy, marsRover won't move");
+        } else {
+            this.currentCoordinates.setCoordinateY(newYCoordinate);
         }
     }
 
     public void decreaseCoordinateX() {
+        int newXCoordinate;
         var xCoordinate = this.currentCoordinates.getCoordinateX();
+        var yCoordinate = this.currentCoordinates.getCoordinateY();
+
         if (xCoordinate == 0) {
-            this.currentCoordinates.setCoordinateX(this.maximumXCoordinate);
+            newXCoordinate = this.maximumXCoordinate;
         } else {
-            this.currentCoordinates.setCoordinateX(--xCoordinate);
+            newXCoordinate = xCoordinate - 1;
+        }
+
+        if (isCoordinateBusy(newXCoordinate, yCoordinate)) {
+            System.out.println("The desired Coordinate is busy, marsRover won't move");
+        } else {
+            this.currentCoordinates.setCoordinateX(newXCoordinate);
         }
     }
 
     public void decreaseCoordinateY() {
+        int newYCoordinate;
         var yCoordinate = this.currentCoordinates.getCoordinateY();
+        var xCoordinate = this.currentCoordinates.getCoordinateX();
+
         if (yCoordinate == 0) {
-            this.currentCoordinates.setCoordinateY(this.maximumYCoordinate);
+            newYCoordinate = this.maximumYCoordinate;
         } else {
-            this.currentCoordinates.setCoordinateY(--yCoordinate);
+            newYCoordinate = yCoordinate - 1;
         }
+
+        if (isCoordinateBusy(xCoordinate, newYCoordinate)) {
+            System.out.println("The desired Coordinate is busy, marsRover won't move");
+        } else {
+            this.currentCoordinates.setCoordinateY(newYCoordinate);
+        }
+    }
+
+    private boolean isCoordinateBusy(int xCoordinate, int yCoordinate) {
+        var coordinate = new Coordinate(xCoordinate, yCoordinate);
+        var exists = obstacles.stream().anyMatch(item ->
+                item.getCoordinateX() == coordinate.getCoordinateX()
+                &&
+                item.getCoordinateY() == coordinate.getCoordinateY()
+        );
+
+        if (exists) {
+            return true;
+        }
+        return false;
     }
 }

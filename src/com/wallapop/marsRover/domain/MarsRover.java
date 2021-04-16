@@ -24,7 +24,7 @@ public class MarsRover {
     }
 
     public MarsRover moveForward() {
-        switch (orientation){
+        switch (orientation) {
             case NORTH:
                 this.coordinateSystem.increaseCoordinateY();
                 break;
@@ -41,8 +41,8 @@ public class MarsRover {
         return this;
     }
 
-    public MarsRover moveBackwards(){
-        switch (orientation){
+    public MarsRover moveBackwards() {
+        switch (orientation) {
             case NORTH:
                 this.coordinateSystem.decreaseCoordinateY();
                 break;
@@ -60,7 +60,7 @@ public class MarsRover {
     }
 
     public MarsRover rotateLeft() {
-        switch (orientation){
+        switch (orientation) {
             case NORTH:
                 this.orientation = Orientation.WEST;
                 break;
@@ -78,7 +78,7 @@ public class MarsRover {
     }
 
     public MarsRover rotateRight() {
-        switch (orientation){
+        switch (orientation) {
             case NORTH:
                 this.orientation = Orientation.EAST;
                 break;

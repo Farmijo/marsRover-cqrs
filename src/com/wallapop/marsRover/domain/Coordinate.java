@@ -5,7 +5,7 @@ public class Coordinate {
     private int coordinateY;
 
     public Coordinate(int x, int y) {
-        if(x < 0 || y < 0) throw new IllegalArgumentException("Coordinates must be ");
+        if (x < 0 || y < 0) throw new IllegalArgumentException("Coordinates must be positive");
         this.coordinateX = x;
         this.coordinateY = y;
     }

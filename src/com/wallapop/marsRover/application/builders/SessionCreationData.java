@@ -4,8 +4,6 @@ import com.wallapop.marsRover.domain.CoordinateSystem;
 import com.wallapop.marsRover.domain.Field;
 import com.wallapop.marsRover.domain.Orientation;
 
-import java.util.Locale;
-
 public class SessionCreationData {
 
     public CoordinateSystem coordinateSystem;
@@ -16,19 +14,24 @@ public class SessionCreationData {
         private Orientation initialOrientation;
         private Field field;
 
-        public Builder(){};
-        public Builder generateCoordinateSystem(int initPositionX, int initPositionY, int sizeFieldX, int sizeFieldY){
-            this.field = new Field(sizeFieldX, sizeFieldY);
+        public Builder() {
+        }
+
+        ;
+
+        public Builder generateCoordinateSystem(int initPositionX, int initPositionY, int sizeFieldX, int sizeFieldY) {
+            this.field = new Field.Builder(4, 4).build();
             this.coordinateSystem = new CoordinateSystem(initPositionX, initPositionY, this.field);
             return this;
         }
+
         public Builder setupInitialOrientation(String initialOrientation) {
             this.initialOrientation = parseOrientation(initialOrientation);
             return this;
         }
 
         private Orientation parseOrientation(String orientation) {
-            switch (orientation.toLowerCase()){
+            switch (orientation.toLowerCase()) {
                 case "n":
                     return Orientation.NORTH;
                 case "s":
@@ -41,10 +44,14 @@ public class SessionCreationData {
                     throw new IllegalArgumentException("Not valid orientation");
             }
         }
-        public SessionCreationData build() { return new SessionCreationData(this);}
+
+        public SessionCreationData build() {
+            return new SessionCreationData(this);
+        }
 
     }
-    private SessionCreationData(Builder builder){
+
+    private SessionCreationData(Builder builder) {
         this.coordinateSystem = builder.coordinateSystem;
         this.initialOrientation = builder.initialOrientation;
     }

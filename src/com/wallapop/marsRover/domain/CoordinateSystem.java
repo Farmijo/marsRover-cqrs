@@ -16,6 +16,32 @@ public class CoordinateSystem {
         this.maximumXCoordinate = field.getSizeX();
         this.maximumYCoordinate = field.getSizeY();
         this.obstacles = field.getObstaclePositions();
+        this.validateInitialPosition();
+    }
+
+    private void validateInitialPosition() {
+        if(isInitialPositionOnObstacle() ) {
+            throw new IllegalArgumentException("Initial Position is on a obstacle Position");
+        }
+        if(isInitialPositionOutsideField()){
+            throw new IllegalArgumentException("Initial Position is outside Field Boundaries");
+        }
+    };
+
+    private boolean isInitialPositionOutsideField(){
+        if(this.currentCoordinates.getCoordinateX() > this.maximumXCoordinate || this.currentCoordinates.getCoordinateY() > this.maximumYCoordinate){
+            return true;
+        }
+        return false;
+    };
+
+    private boolean isInitialPositionOnObstacle() {
+        var isInitialPositionOnObstacle = obstacles.stream().anyMatch(item ->
+                item.getCoordinateX() == currentCoordinates.getCoordinateX()
+                        &&
+                        item.getCoordinateY() == currentCoordinates.getCoordinateY()
+        );
+        return isInitialPositionOnObstacle;
     }
 
     public int getCurrentCoordinateX() {

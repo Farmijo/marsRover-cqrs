@@ -34,9 +34,20 @@ public class ConsoleApplication {
         System.out.println("Insert initial rover direction:");
         String roverz = reader.next(); //n = north, e = east, w = west, s = south
 
-        var sessionCreationCommand = new CreateMarsRoverSessionCommand(sizex, sizey, roverz, roverx, rovery);
+        System.out.println("Do you want obstacles? (y/n)");
+        String obstaclesDesired = reader.next();
 
-        this.sessionCommandHandler.dispatch(sessionCreationCommand);
+        switch (obstaclesDesired) {
+            case "y":
+                this.sessionCommandHandler.dispatch(new CreateMarsRoverSessionWithObstaclesCommand(sizex, sizey, roverz, roverx, rovery));
+                break;
+            case "n":
+                var sessionCreationCommand = new CreateMarsRoverSessionCommand(sizex, sizey, roverz, roverx, rovery);
+                this.sessionCommandHandler.dispatch(sessionCreationCommand);
+                break;
+            default:
+                throw new RuntimeException("Not valid answer");
+        }
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");

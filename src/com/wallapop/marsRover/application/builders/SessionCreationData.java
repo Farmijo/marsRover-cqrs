@@ -1,8 +1,11 @@
 package com.wallapop.marsRover.application.builders;
 
+import com.wallapop.marsRover.domain.Coordinate;
 import com.wallapop.marsRover.domain.CoordinateSystem;
 import com.wallapop.marsRover.domain.Field;
 import com.wallapop.marsRover.domain.Orientation;
+
+import java.util.ArrayList;
 
 public class SessionCreationData {
 
@@ -15,12 +18,19 @@ public class SessionCreationData {
         private Field field;
 
         public Builder() {
-        }
-
-        ;
+        };
 
         public Builder generateCoordinateSystem(int initPositionX, int initPositionY, int sizeFieldX, int sizeFieldY) {
-            this.field = new Field.Builder(4, 4).build();
+            this.field = new Field.Builder(sizeFieldX, sizeFieldY).build();
+            this.coordinateSystem = new CoordinateSystem(initPositionX, initPositionY, this.field);
+            return this;
+        }
+
+        public Builder generateCoordinateSystemWithObstacles(int initPositionX, int initPositionY, int sizeFieldX, int sizeFieldY) {
+            var obstacles = new ArrayList<Coordinate>();
+            obstacles.add(new Coordinate(1,2));
+            obstacles.add(new Coordinate(3,1));
+            this.field = new Field.Builder(sizeFieldX, sizeFieldY).addObstacles(obstacles).build();
             this.coordinateSystem = new CoordinateSystem(initPositionX, initPositionY, this.field);
             return this;
         }

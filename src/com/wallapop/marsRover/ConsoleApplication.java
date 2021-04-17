@@ -4,6 +4,7 @@ import com.wallapop.marsRover.application.commands.*;
 import com.wallapop.marsRover.application.handlers.CreateSessionCommandHandler;
 import com.wallapop.marsRover.application.handlers.MarsRoverActionCommandHandler;
 import com.wallapop.marsRover.application.services.MarsRoverService;
+import com.wallapop.marsRover.infrastructure.InMemoryMarsRoverRepository;
 
 import java.util.Scanner;
 
@@ -12,7 +13,8 @@ public class ConsoleApplication {
     MarsRoverActionCommandHandler actionsCommandHandler;
 
     ConsoleApplication() {
-        var service = new MarsRoverService();
+        var repository = new InMemoryMarsRoverRepository();
+        var service = new MarsRoverService(repository);
         this.sessionCommandHandler = new CreateSessionCommandHandler(service);
         this.actionsCommandHandler = new MarsRoverActionCommandHandler(service);
     }

@@ -1,11 +1,10 @@
 package com.wallapop.Tests;
 
-import com.wallapop.marsRover.domain.CoordinateSystem;
-import com.wallapop.marsRover.domain.Field;
-import com.wallapop.marsRover.domain.MarsRover;
-import com.wallapop.marsRover.domain.Orientation;
+import com.wallapop.marsRover.domain.*;
 import org.junit.Test;
 import org.testng.Assert;
+
+import java.util.UUID;
 
 public class TestCoordinatesMovement {
 
@@ -16,8 +15,8 @@ public class TestCoordinatesMovement {
         var map = new Field.Builder(4, 4).build();
 
         var initialCoordinates = new CoordinateSystem(1, 1, map);
-
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
         Assert.assertEquals(marsRover.getRoverX(), 2);
@@ -30,7 +29,8 @@ public class TestCoordinatesMovement {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
         Assert.assertEquals(marsRover.getRoverX(), 0);
@@ -43,7 +43,8 @@ public class TestCoordinatesMovement {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
         Assert.assertEquals(marsRover.getRoverY(), 2);
@@ -56,7 +57,8 @@ public class TestCoordinatesMovement {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
         Assert.assertEquals(marsRover.getRoverY(), 0);

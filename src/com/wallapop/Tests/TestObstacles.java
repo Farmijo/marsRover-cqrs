@@ -4,10 +4,7 @@ import com.wallapop.marsRover.domain.*;
 import org.junit.Test;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class TestObstacles {
 
@@ -31,7 +28,8 @@ public class TestObstacles {
 
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
 
@@ -46,7 +44,8 @@ public class TestObstacles {
         var map = new Field.Builder(4, 4).addObstacles(list).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveForward();
 
@@ -61,7 +60,8 @@ public class TestObstacles {
         var map = new Field.Builder(4, 4).addObstacles(list).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveBackwards();
 
@@ -76,7 +76,8 @@ public class TestObstacles {
         var map = new Field.Builder(4, 4).addObstacles(list).build();
         var initialCoordinates = new CoordinateSystem(1, 0, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.moveBackwards();
 

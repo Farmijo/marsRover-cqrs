@@ -2,13 +2,16 @@ package com.wallapop.marsRover.application.builders;
 
 import com.wallapop.marsRover.domain.CoordinateSystem;
 import com.wallapop.marsRover.domain.Field;
+import com.wallapop.marsRover.domain.MarsRoverId;
 import com.wallapop.marsRover.domain.Orientation;
+
+import java.util.UUID;
 
 public class SessionCreationData {
 
     public CoordinateSystem coordinateSystem;
     public Orientation initialOrientation;
-
+    public MarsRoverId id = new MarsRoverId(UUID.randomUUID());
     public static class Builder {
         private CoordinateSystem coordinateSystem;
         private Orientation initialOrientation;

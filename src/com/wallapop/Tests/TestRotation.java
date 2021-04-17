@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TestRotation {
 
@@ -15,7 +16,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateLeft();
 
@@ -28,7 +30,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateLeft();
 
@@ -41,7 +44,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateLeft();
 
@@ -54,7 +58,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateLeft();
 
@@ -67,7 +72,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateRight();
 
@@ -80,7 +86,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateRight();
 
@@ -93,7 +100,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateRight();
 
@@ -106,7 +114,8 @@ public class TestRotation {
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var id = new MarsRoverId(UUID.randomUUID());
+        var marsRover = new MarsRover(id, initialCoordinates, initialOrientation);
 
         marsRover.rotateRight();
 

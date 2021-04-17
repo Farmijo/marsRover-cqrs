@@ -1,20 +1,25 @@
 package com.wallapop.marsRover.domain;
 
-public class MarsRover {
+import com.wallapop.Shared.kernel.domain.IdValueObject;
 
+import java.util.UUID;
+
+public class MarsRover {
+    private MarsRoverId marsRoverId;
     private CoordinateSystem coordinateSystem;
     private Orientation orientation;
 
 
-    public MarsRover(CoordinateSystem coordinateSystem, Orientation orientation) {
+    public MarsRover(MarsRoverId id, CoordinateSystem coordinateSystem, Orientation orientation) {
+        this.marsRoverId = id;
         this.coordinateSystem = coordinateSystem;
         this.orientation = orientation;
     }
 
+    public MarsRoverId getID(){ return this.marsRoverId; }
     public int getRoverX() {
         return this.coordinateSystem.getCurrentCoordinateX();
     }
-
     public int getRoverY() {
         return this.coordinateSystem.getCurrentCoordinateY();
     }

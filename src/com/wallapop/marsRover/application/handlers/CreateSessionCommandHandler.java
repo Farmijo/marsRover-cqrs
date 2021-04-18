@@ -15,7 +15,7 @@ public class CreateSessionCommandHandler {
     public void dispatch(CreateMarsRoverSessionCommand command) {
         var sessionCreationData = new SessionCreationData
                 .Builder()
-                .setupInitialOrientation(command.initialOrientation)
+                .generateOrientationSystem(command.initialOrientation)
                 .generateCoordinateSystem(command.initialPositionX, command.initialPositionY, command.sizeMapX, command.sizeMapY)
                 .build();
 
@@ -26,7 +26,7 @@ public class CreateSessionCommandHandler {
     public void dispatch(CreateMarsRoverSessionWithObstaclesCommand command) {
         var sessionCreationData = new SessionCreationData
                 .Builder()
-                .setupInitialOrientation(command.initialOrientation)
+                .generateOrientationSystem(command.initialOrientation)
                 .generateCoordinateSystemWithObstacles(command.initialPositionX, command.initialPositionY, command.sizeMapX, command.sizeMapY)
                 .build();
 

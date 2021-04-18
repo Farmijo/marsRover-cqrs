@@ -52,6 +52,40 @@ public class CoordinateSystem {
         return this.currentCoordinates.getCoordinateY();
     }
 
+    public void moveForward(Orientation orientation) {
+        switch (orientation) {
+            case NORTH:
+                this.increaseCoordinateY();
+                break;
+            case EAST:
+                this.increaseCoordinateX();
+                break;
+            case SOUTH:
+                this.decreaseCoordinateY();
+                break;
+            case WEST:
+                this.decreaseCoordinateX();
+                break;
+        }
+    }
+
+    public void moveBackwards(Orientation orientation) {
+        switch (orientation) {
+            case NORTH:
+                this.decreaseCoordinateY();
+                break;
+            case EAST:
+                this.decreaseCoordinateX();
+                break;
+            case SOUTH:
+                this.increaseCoordinateY();
+                break;
+            case WEST:
+                this.increaseCoordinateX();
+                break;
+        }
+    }
+
     public void increaseCoordinateX() {
         int newXCoordinate;
         var xCoordinate = this.currentCoordinates.getCoordinateX();

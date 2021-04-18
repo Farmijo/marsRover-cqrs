@@ -1,20 +1,17 @@
 package com.wallapop.marsRover.application.builders;
 
-import com.wallapop.marsRover.domain.Coordinate;
-import com.wallapop.marsRover.domain.CoordinateSystem;
-import com.wallapop.marsRover.domain.Field;
-import com.wallapop.marsRover.domain.Orientation;
+import com.wallapop.marsRover.domain.*;
 
 import java.util.ArrayList;
 
 public class SessionCreationData {
 
     public CoordinateSystem coordinateSystem;
-    public Orientation initialOrientation;
+    public OrientationSystem orientationSystem;
 
     public static class Builder {
         private CoordinateSystem coordinateSystem;
-        private Orientation initialOrientation;
+        private OrientationSystem orientationSystem;
         private Field field;
 
         public Builder() {
@@ -35,8 +32,9 @@ public class SessionCreationData {
             return this;
         }
 
-        public Builder setupInitialOrientation(String initialOrientation) {
-            this.initialOrientation = parseOrientation(initialOrientation);
+        public Builder generateOrientationSystem(String initialOrientation) {
+            var orientation = parseOrientation(initialOrientation);
+            this.orientationSystem = new OrientationSystem(orientation);
             return this;
         }
 
@@ -63,7 +61,7 @@ public class SessionCreationData {
 
     private SessionCreationData(Builder builder) {
         this.coordinateSystem = builder.coordinateSystem;
-        this.initialOrientation = builder.initialOrientation;
+        this.orientationSystem = builder.orientationSystem;
     }
 
 }

@@ -15,13 +15,12 @@ public class TestInitialConditions {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotInit_if_initPosition_IsOutsideBoundaries() throws Exception {
-        var initialOrientation = Orientation.EAST;
         var map = new Field.Builder(4, 4).build();
         var initialCoordinates = new CoordinateSystem(6, 1, map);
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void cannotInit_if_initPosition_IsOnObstacle() throws Exception {
-        var initialOrientation = Orientation.EAST;
         var list = new ArrayList<Coordinate>();
         var obstacle = new Coordinate(2, 1);
         list.add(obstacle);

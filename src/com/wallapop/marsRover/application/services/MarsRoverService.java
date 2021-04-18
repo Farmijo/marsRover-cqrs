@@ -12,7 +12,7 @@ public class MarsRoverService {
     }
 
     public MarsRover createMarsRoverNavigationSession(SessionCreationData builder) {
-        var marsRover = new MarsRover(builder.coordinateSystem, builder.initialOrientation);
+        var marsRover = new MarsRover(builder.coordinateSystem, builder.orientationSystem);
         this.marsRoverRepository.saveMarsRover(marsRover);
         return marsRover;
     }

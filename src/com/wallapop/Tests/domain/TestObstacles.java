@@ -24,14 +24,14 @@ public class TestObstacles {
     @Test
     public void cannot_move_to_nonEmpty_coordinate_onXAxis() throws Exception {
         var initialOrientation = Orientation.EAST;
+
         var list = new ArrayList<Coordinate>();
         var obstacle = new Coordinate(2, 1);
         list.add(obstacle);
-        var map = new Field.Builder(4, 4).addObstacles(list).build();
 
-        var initialCoordinates = new CoordinateSystem(1, 1, map);
-
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var sizeField = new Coordinate(4,4);
+        var initialCoordinate = new Coordinate(1,1);
+        var marsRover = MarsRoverFactory.buildOnFieldWithObstacles(initialOrientation,sizeField, initialCoordinate, list);
 
         marsRover.moveForward();
 
@@ -43,10 +43,10 @@ public class TestObstacles {
         var list = new ArrayList<Coordinate>();
         var obstacle = new Coordinate(1, 2);
         list.add(obstacle);
-        var map = new Field.Builder(4, 4).addObstacles(list).build();
-        var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var sizeField = new Coordinate(4,4);
+        var initialCoordinate = new Coordinate(1,1);
+        var marsRover = MarsRoverFactory.buildOnFieldWithObstacles(initialOrientation,sizeField, initialCoordinate, list);
 
         marsRover.moveForward();
 
@@ -58,10 +58,10 @@ public class TestObstacles {
         var list = new ArrayList<Coordinate>();
         var obstacle = new Coordinate(1, 0);
         list.add(obstacle);
-        var map = new Field.Builder(4, 4).addObstacles(list).build();
-        var initialCoordinates = new CoordinateSystem(1, 1, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var sizeField = new Coordinate(4,4);
+        var initialCoordinate = new Coordinate(1,1);
+        var marsRover = MarsRoverFactory.buildOnFieldWithObstacles(initialOrientation,sizeField, initialCoordinate, list);
 
         marsRover.moveBackwards();
 
@@ -73,10 +73,10 @@ public class TestObstacles {
         var list = new ArrayList<Coordinate>();
         var obstacle = new Coordinate(0, 0);
         list.add(obstacle);
-        var map = new Field.Builder(4, 4).addObstacles(list).build();
-        var initialCoordinates = new CoordinateSystem(1, 0, map);
 
-        var marsRover = new MarsRover(initialCoordinates, initialOrientation);
+        var sizeField = new Coordinate(4,4);
+        var initialCoordinate = new Coordinate(1,0);
+        var marsRover = MarsRoverFactory.buildOnFieldWithObstacles(initialOrientation,sizeField, initialCoordinate, list);
 
         marsRover.moveBackwards();
 

@@ -3,12 +3,11 @@ package com.wallapop.marsRover.domain;
 public class MarsRover {
 
     private CoordinateSystem coordinateSystem;
-    private Orientation orientation;
+    private OrientationSystem orientationSystem;
 
-
-    public MarsRover(CoordinateSystem coordinateSystem, Orientation orientation) {
+    public MarsRover(CoordinateSystem coordinateSystem, OrientationSystem orientationSystem) {
         this.coordinateSystem = coordinateSystem;
-        this.orientation = orientation;
+        this.orientationSystem = orientationSystem;
     }
 
     public int getRoverX() {
@@ -20,78 +19,28 @@ public class MarsRover {
     }
 
     public Orientation getOrientation() {
-        return this.orientation;
+        return this.orientationSystem.getCurrentOrientation();
     }
 
     public MarsRover moveForward() {
-        switch (orientation) {
-            case NORTH:
-                this.coordinateSystem.increaseCoordinateY();
-                break;
-            case EAST:
-                this.coordinateSystem.increaseCoordinateX();
-                break;
-            case SOUTH:
-                this.coordinateSystem.decreaseCoordinateY();
-                break;
-            case WEST:
-                this.coordinateSystem.decreaseCoordinateX();
-                break;
-        }
+        var orientation = this.orientationSystem.getCurrentOrientation();
+        this.coordinateSystem.moveForward(orientation);
         return this;
     }
 
     public MarsRover moveBackwards() {
-        switch (orientation) {
-            case NORTH:
-                this.coordinateSystem.decreaseCoordinateY();
-                break;
-            case EAST:
-                this.coordinateSystem.decreaseCoordinateX();
-                break;
-            case SOUTH:
-                this.coordinateSystem.increaseCoordinateY();
-                break;
-            case WEST:
-                this.coordinateSystem.increaseCoordinateX();
-                break;
-        }
+        var orientation = this.orientationSystem.getCurrentOrientation();
+        this.coordinateSystem.moveBackwards(orientation);
         return this;
     }
 
     public MarsRover rotateLeft() {
-        switch (orientation) {
-            case NORTH:
-                this.orientation = Orientation.WEST;
-                break;
-            case EAST:
-                this.orientation = Orientation.NORTH;
-                break;
-            case SOUTH:
-                this.orientation = Orientation.EAST;
-                break;
-            case WEST:
-                this.orientation = Orientation.SOUTH;
-                break;
-        }
+        this.orientationSystem.rotateLeft();
         return this;
     }
 
     public MarsRover rotateRight() {
-        switch (orientation) {
-            case NORTH:
-                this.orientation = Orientation.EAST;
-                break;
-            case EAST:
-                this.orientation = Orientation.SOUTH;
-                break;
-            case SOUTH:
-                this.orientation = Orientation.WEST;
-                break;
-            case WEST:
-                this.orientation = Orientation.NORTH;
-                break;
-        }
+        this.orientationSystem.rotateRight();
         return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.wallapop.Tests.application;
 
 import com.wallapop.marsRover.application.builders.SessionCreationData;
+import com.wallapop.marsRover.application.commands.CreateMarsRoverSessionCommand;
 import com.wallapop.marsRover.application.commands.CreateMarsRoverSessionWithObstaclesCommand;
 import com.wallapop.marsRover.application.handlers.CreateSessionCommandHandler;
 import com.wallapop.marsRover.application.handlers.MarsRoverActionCommandHandler;
@@ -32,13 +33,19 @@ public class TestCreateSessionCommandHandler {
 
     @Test
     public void createMarsRover_isCalled() throws Exception {
-        var command = new CreateMarsRoverSessionWithObstaclesCommand(4, 4, "e", 1, 1);
+        var command = new CreateMarsRoverSessionCommand(4, 4, "e", 1, 1);
         this.handler.dispatch(command);
 
         var marsRover = repository.getMarsRover();
 
         Assert.assertEquals(marsRover.getRoverX(), 1);
         Assert.assertEquals(marsRover.getRoverY(), 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void createMarsRoverWithObstacles_withInitialPositionOnObstacle_isCalledAndFails() throws Exception {
+        var command = new CreateMarsRoverSessionWithObstaclesCommand(4, 4, "e", 1, 2);
+        this.handler.dispatch(command);
     }
 
 }

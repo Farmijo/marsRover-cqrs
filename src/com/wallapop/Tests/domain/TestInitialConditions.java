@@ -1,4 +1,4 @@
-package com.wallapop.Tests;
+package com.wallapop.Tests.domain;
 
 import com.wallapop.marsRover.domain.Coordinate;
 import com.wallapop.marsRover.domain.CoordinateSystem;

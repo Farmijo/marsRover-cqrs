@@ -1,4 +1,4 @@
-package com.wallapop.Tests;
+package com.wallapop.Tests.domain;
 
 import com.wallapop.marsRover.domain.*;
 import org.junit.Test;
@@ -18,8 +18,8 @@ public class TestObstacles {
         var obstacle = new Coordinate(2, 1);
         list.add(obstacle);
         var map = new Field.Builder(4, 4).addObstacles(list).build();
-        var cointainsObstacle = map.getObstaclePositions().contains(obstacle);
-        Assert.assertEquals(cointainsObstacle, true);
+        var containsObstacle = map.getObstaclePositions().contains(obstacle);
+        Assert.assertEquals(containsObstacle, true);
     }
     @Test
     public void cannot_move_to_nonEmpty_coordinate_onXAxis() throws Exception {

@@ -4,6 +4,7 @@ import com.wallapop.marsRover.application.commands.*;
 import com.wallapop.marsRover.application.handlers.CreateSessionCommandHandler;
 import com.wallapop.marsRover.application.handlers.MarsRoverActionCommandHandler;
 import com.wallapop.marsRover.application.services.MarsRoverService;
+import com.wallapop.marsRover.infrastructure.InMemoryMarsRoverRepository;
 
 import java.util.Scanner;
 
@@ -12,7 +13,8 @@ public class ConsoleApplication {
     MarsRoverActionCommandHandler actionsCommandHandler;
 
     ConsoleApplication() {
-        var service = new MarsRoverService();
+        var repository = new InMemoryMarsRoverRepository();
+        var service = new MarsRoverService(repository);
         this.sessionCommandHandler = new CreateSessionCommandHandler(service);
         this.actionsCommandHandler = new MarsRoverActionCommandHandler(service);
     }
@@ -31,7 +33,7 @@ public class ConsoleApplication {
         System.out.println("Insert vertical initial rover position:");
         int rovery = reader.nextInt();
 
-        System.out.println("Insert initial rover direction:");
+        System.out.println("Insert initial rover direction:n = north, e = east, w = west, s = south");
         String roverz = reader.next(); //n = north, e = east, w = west, s = south
 
         System.out.println("Do you want obstacles? (y/n)");

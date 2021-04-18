@@ -2,35 +2,42 @@ package com.wallapop.marsRover.application.services;
 
 import com.wallapop.marsRover.application.builders.SessionCreationData;
 import com.wallapop.marsRover.domain.MarsRover;
+import com.wallapop.marsRover.domain.MarsRoverRepository;
 
 public class MarsRoverService {
-    MarsRover marsRover;
+    MarsRoverRepository marsRoverRepository;
 
-    public MarsRoverService() {
+    public MarsRoverService(MarsRoverRepository marsRoverRepository) {
+        this.marsRoverRepository = marsRoverRepository;
     }
 
     public MarsRover createMarsRoverNavigationSession(SessionCreationData builder) {
-        marsRover = new MarsRover(builder.coordinateSystem, builder.initialOrientation);
+        var marsRover = new MarsRover(builder.coordinateSystem, builder.initialOrientation);
+        this.marsRoverRepository.saveMarsRover(marsRover);
         return marsRover;
     }
 
     public MarsRover rotateLeft() {
-        this.marsRover.rotateLeft();
+        var marsRover = this.marsRoverRepository.getMarsRover();
+        marsRover.rotateLeft();
         return marsRover;
     }
 
     public MarsRover rotateRight() {
-        this.marsRover.rotateRight();
+        var marsRover = this.marsRoverRepository.getMarsRover();
+        marsRover.rotateRight();
         return marsRover;
     }
 
     public MarsRover moveBackwards() {
-        this.marsRover.moveBackwards();
+        var marsRover = this.marsRoverRepository.getMarsRover();
+        marsRover.moveBackwards();
         return marsRover;
     }
 
     public MarsRover moveForward() {
-        this.marsRover.moveForward();
+        var marsRover = this.marsRoverRepository.getMarsRover();
+        marsRover.moveForward();
         return marsRover;
     }
 

@@ -43,6 +43,7 @@ The domain logic is covered through the domain tests without caring of storages,
 The application logic is tested in a sort of integration tests. Commands are launched to the handlers and the side effects are checked on the inMemoryRepository.
 
 **Random Facts**
+- The obstacle detection has being implemented. The obstacle position is hardcoded, though.
 - The whole projects has been refactored inside-out through TDD. After a bit of cleanup, a MarsRover Class that contained almost all the logic of the initial status was created, allowing it to write tests. Once the domain was created, the services and commands were added.
 - Builder pattern used on complex or with optional fields objects (field, that could have obstacles or not, sessionCreation Data)
 - Tried to add several rovers with obstacles at the same time, but the complexity increased. The Field should be stored apart and updated with the obstacles and each Rover move to allow that.

@@ -32,7 +32,8 @@ The ActionCommands are a lot simpler. They just specify the action desired (rota
 _**Disclaimer**_: This approach will imply move the CreateSession Handler logic to the service if more Rovers would be placed in mars, since the Field should be updated at every move and this will require store the Field status to pass it to the CoordinateSystem to avoid collisions.
 
 **Infrastructure Layer.**
-  Just a simple InMemoryRepository that will store the current status of the Mars rover (just one Mars Rover.)
+
+Just a simple InMemoryRepository that will store the current status of the Mars rover (just one Mars Rover.)
 
 **Application Interface:**
   The code is a bit messy on the Command Line app, but the Mars Rover project is totally unaware of who's calling him. The CLI app is dependent of the domain, not viceversa.
@@ -46,3 +47,4 @@ The application logic is tested in a sort of integration tests. Commands are lau
 - Builder pattern used on complex or with optional fields objects (field, that could have obstacles or not, sessionCreation Data)
 - Tried to add several rovers with obstacles at the same time, but the complexity increased. The Field should be stored apart and updated with the obstacles and each Rover move to allow that.
 - No IoC container provided, i'm not experienced with them outside the Spring Boot one. The dependency tree is resolved on the app init. 
+- Commands and Services are not abstracted at 100%, but could be 
